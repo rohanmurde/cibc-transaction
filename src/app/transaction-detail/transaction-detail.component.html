@@ -1,0 +1,27 @@
+<div class="container-sm">
+<form #transacDetail="ngForm" (ngSubmit)="updateForm()">
+    <div class="form-group" tabindex="0">
+        <label for="id">Transaction ID</label>
+        <input type="text" class="form-control" name="id" [(ngModel)]="aTransaction.id" disabled tabindex="0">
+    </div>
+    <div class="form-group" tabindex="0">
+        <label for="date">Date</label>
+        <input type="text" class="form-control" name="date" [(ngModel)]="aTransaction.date" disabled tabindex="0">
+    </div>
+    <div class="form-group" tabindex="0">
+        <label for="comments">Comments</label>
+        <textarea rows="2" type="textarea" class="form-control" name="comments" #checkComments="ngModel" [(ngModel)]="aTransaction.comments"
+        required pattern="^[a-zA-Z0-9 ]*$"></textarea>
+        <small *ngIf="checkComments.touched || checkComments.dirty">
+            <p *ngIf="checkComments.errors?.required" tabindex="0">Comments is a required field.</p>
+            <p *ngIf="checkComments.errors?.pattern" tabindex="0">Enter only alphabets and numbers.</p>
+        </small>
+    </div>
+    <div class="text-center mt-4">
+        <button class="btn btn-success" type="submit" [disabled]="!transacDetail.valid">Update Comment</button>
+    </div>
+</form>
+</div>
+<div class="text-center mt-2">
+    <button (click)="gotoList()" class="btn btn-primary">Back to the list</button>
+</div>

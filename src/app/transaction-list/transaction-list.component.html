@@ -1,0 +1,21 @@
+<div class="row justify-content-center">
+    <table class="table table-striped table-dark table-bordered" *ngIf="!showDetail">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tran of transacList">
+            <th scope="row" [innerHTML]="tran.id"></th>
+            <td [innerHTML]="tran.date"></td>
+            <td [innerHTML]="tran.comments"></td>
+            <td *ngIf="tran.view"><a [routerLink]="" (click)="gotoDetailPage(tran)">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-transaction-detail *ngIf="showDetail" (updateComment)="updateCom($event)" [aTransaction]="selectedTransaction"></app-transaction-detail>

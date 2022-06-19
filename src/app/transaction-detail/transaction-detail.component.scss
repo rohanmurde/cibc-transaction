@@ -1,0 +1,18 @@
+.container-sm {
+  max-width: 540px;
+  form {
+    .form-group {
+      small {
+        p {
+          color: rgb(232, 59, 59);
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+button {
+    max-width: 200px;
+    width: 100%;
+}
